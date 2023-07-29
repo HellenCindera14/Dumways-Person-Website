@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Update Project</title>
+    <link
+      rel="shortcut icon"
+      href="/public/images/sasukepng.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-secondary-subtle">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-4 py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://dumbways.id/" target="_blank">
+          <img src="/public/images/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse text-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active fw-bold" href="#">UPDATE PROJECT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="testimonial">TESTIMONIAL</a>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            {{if .FlashStatus}}
+            <a class="nav-link me-3">Halo, {{.FlashName}}</a>
+            <a class="nav-link me-3" href="/logout" id="logout">Logout</a>
+            {{else}}
+            <a class="nav-link me-3" href="FormRegister " id="register">Register</a>
+            <a class="nav-link me-3 active" href="FormLogin" id="login">Login</a> 
+            {{end}}
+            <a class="btn btn-dark" href="contact" role="button">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="p-3">
+      <form
+        action="/edit-project/{{.Id}}"
+        method="post"
+        class="m-auto"
+        style="max-width: 500px"
+        enctype="multipart/form-data"
+      >
+        <h1 class="mb-3 text-center fw-bold">UPDATE MY PROJECT</h1>
+
+        <div class="mb-3">
+          <input type="hidden" value="{{.Id}}" name="id" id="id">
+          <label for="projectName" class="form-label fw-bold"
+            >Project Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="input-name"
+            id="input-name-project"
+            value="{{.Project.ProjectName}}"
+            required
+          />
+        </div>
+
+        <div class="mb-3 row">
+          <div class="col">
+            <label for="startDate" class="form-label fw-bold">Start Date</label>
+            <input
+              type="date"
+              class="form-control"
+              name="startDate"
+              id="start-date"
+              value="{{.startDateString}}"
+              required
+            />
+          </div>
+          <div class="col">
+            <label for="endDate" class="form-label fw-bold">End Date</label>
+            <input
+              type="date"
+              class="form-control"
+              name="endDate"
+              id="end-date"
+              value="{{.endDateString}}"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="description" class="form-label fw-bold"
+            >Description</label
+          >
+          <textarea
+            class="form-control"
+            name="input-description"
+            id="input-description"
+            style="resize: none; height: 10em"
+            required
+          >
+{{.Project.Description}}</textarea
+          >
+        </div>
+
+        <div class="mb-3 row">
+          <label class="form-label fw-bold">Technologies</label>
+          <div class="col">
+            <div>
+              <input
+                class="form-check-input me-auto multi-input"
+                type="checkbox"
+                name="NodeJs"
+                id="node-js"
+                value="NodeJs"
+                {{if .Project.NodeJs}} checked {{end}}
+              />
+              <label class="ms-2" for="node-js">Node Js</label>
+            </div>
+            <div>
+              <input
+                class="form-check-input me-auto multi-input"
+                type="checkbox"
+                name="ReactJs"
+                id="react-js"
+                value="ReactJs"
+                {{if .Project.ReactJs}} checked {{end}}
+              />
+              <label class="ms-2" for="react-js">React Js</label>
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <input
+                class="form-check-input me-auto multi-input"
+                type="checkbox"
+                name="Golang"
+                id="golang"
+                value="Golang"
+                {{if .Project.Golang}} checked {{end}}
+              />
+              <label class="ms-2" for="golang">Golang</label>
+            </div>
+            <div>
+              <input
+                class="form-check-input me-auto multi-input"
+                type="checkbox"
+                name="Javascript"
+                id="javascript"
+                value="Javascript"
+                {{if .Project.Javascript}} checked {{end}}
+              />
+              <label class="ms-2" for="javascript">Javascript</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="formFile" class="form-label fw-bold">Upload Image</label>
+          <input
+            class="form-control"
+            type="file"
+            id="input-image"
+            name="input-image"
+            value="{{.Project.Image}}"
+            required
+          />
+        </div>
+
+        <div class="mb-3 text-end">
+          <button class="btn btn-dark rounded-pill fw-bold px-4" type="submit">
+            submit
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

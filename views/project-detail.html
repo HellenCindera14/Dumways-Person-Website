@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Detail</title>
+    <link
+      rel="shortcut icon"
+      href="/public/images/sasukepng.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="/public/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-4 py-3">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="https://dumbways.id/" target="_blank">
+          <img src="/public/images/logo.png" />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse text-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="/">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/add-project">ADD PROJECT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/testimonial">TESTIMONIAL</a>
+            </li>
+          </ul>
+          <div class="d-flex justify-content-center">
+            {{if .FlashStatus}}
+            <a class="nav-link me-3">Halo, {{.FlashName}}</a>
+            <a class="nav-link me-3" href="/logout" id="logout">Logout</a>
+            {{else}}
+            <a class="nav-link me-3" href="FormRegister " id="register">Register</a>
+            <a class="nav-link me-3 active" href="FormLogin" id="login">Login</a> 
+            {{end}}
+            <a class="btn btn-dark" href="contact" role="button">Contact Me</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="bg-secondary-subtle p-sm-5">
+      <div class="container bg-light">
+        <div class="text-center">
+          <h2 class="fw-bold p-5">{{.Project.ProjectName}}</h2>
+        </div>
+        <div class="d-flex flex-xl-row flex-column">
+          <div class="img-blog mx-lg-5 m-2">
+            <img
+              src="/uploads{{.Project.Image}}"
+              style="width: 100%; height: 25em; object-fit: cover"
+              alt=""
+            />
+          </div>
+          <div class="fs-6 p-5">
+            <h3 class="fw-bold mb-3">Duration</h3>
+            <p>
+              <i class="fa-regular fa-calendar-days fa-2x me-3"></i>
+              {{.startDateString}} - {{.endDateString}}
+            </p>
+            <p>
+              <i class="fa-solid fa-clock fa-2x me-3"></i>{{.Project.Duration}}
+            </p>
+            <h3 class="fw-bold mb-3 me-3">Tehcnologies</h3>
+            <p>
+              {{if .Project.ReactJs}}
+              <i class="fa-brands fa-react fa-2x me-3"></i> React JS {{end}}
+              {{if .Project.NodeJs}}
+              <i class="fa-brands fa-node-js fa-2x mx-3"></i> Node JS {{end}}
+            </p>
+            <p>
+              {{if .Project.Javascript}}
+              <i class="fa-brands fa-square-js fa-2x me-3"></i> Javascript
+              {{end}} {{if .Project.Golang}}
+              <i class="fa-brands fa-golang fa-2x mx-3"></i> Golang {{end}}
+            </p>
+          </div>
+        </div>
+
+        <div class="text-blog p-lg-5 px-3">{{.Project.Description}}</div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

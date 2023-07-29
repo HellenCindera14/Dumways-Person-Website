@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+* {
+  text-decoration: none !important;
+  font-family: "Poppins", sans-serif;
+  color: black;
+}
+
+body {
+  min-height: 1000px;
+}
+
+.container-index {
+  padding: 1em 2em 0 2em;
+  text-align: justify;
+}
+
+.container-index .button-contact button {
+  transition: 0.3s ease-out;
+}
+
+.container-index .button-contact button:hover {
+  background-color: orangered;
+}
+
+.container-index .social-media a i {
+  font-size: 40px;
+  transition: 0.3s ease-in-out;
+}
+
+.container-index .social-media a i:hover {
+  color: orangered;
+}
+
+.card-project {
+  padding: 10px;
+  width: 330px;
+  height: 450px;
+  transition: 0.3s ease-out;
+}
+
+.card-project:hover {
+  transform: scale(1.03);
+}
+
+.card-project img {
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+}
+
+.card-title {
+  font-size: 13px;
+}
+
+.card-title a {
+  color: black;
+  transition: 0.3s ease-out;
+}
+.card-title a:hover {
+  color: #5fae10;
+}
+
+.card-duration {
+  font-size: small;
+  color: rgb(96, 96, 96);
+}
+
+.btn-card-index button {
+  transition: 0.4s ease-out;
+}
+.btn-card-index button:hover {
+  background-color: #63b313;
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* --------------------------STYLING BLOG.HTML----------------------------------------- */
+/* ---------------------------------------------------------------------------------------- */
+.text-blog {
+  text-align: justify;
+}
+
+.img-blog {
+  flex: 50%;
+  width: auto;
+}
